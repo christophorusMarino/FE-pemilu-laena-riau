@@ -2,8 +2,8 @@
   <div>
     <v-card flat>
       <v-tabs grow v-model="currentTab">
-        <v-tab href="#DPR_RI"> DPR RI </v-tab>
-        <v-tab href="#DPRD_KOTA"> DPRD KABUPATEN/KOTA </v-tab>
+        <v-tab href="#DPR_RI"> Ir. H. MOHAMAD IDRIS LAENA, M.H </v-tab>
+        <v-tab href="#DPRD_KOTA"> Drs. M. JAMIL LAENA </v-tab>
 
         <v-tabs-items v-model="currentTab">
           <v-tab-item value="DPR_RI">

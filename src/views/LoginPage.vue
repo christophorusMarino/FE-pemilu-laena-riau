@@ -22,6 +22,9 @@
         <v-card-title class="pa-0 justify-center font-weight-bold">
           PARTAI GOLONGAN KARYA
         </v-card-title>
+        <v-card-title class="pa-0 justify-center font-weight-bold">
+          RIAU II
+        </v-card-title>
         <v-divider class="my-3"></v-divider>
         <v-card-title class="pb-0 text-h5 justify-center font-weight-bold">
           - Login -
