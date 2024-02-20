@@ -178,6 +178,10 @@
         </v-card-text>
       </template>
     </v-card>
+
+    <v-snackbar v-model="alertSnackbar" timeout="2000" :color="colorSnackbar">
+      <strong>{{ textSnackbar }}</strong>
+    </v-snackbar>
   </div>
 </template>
 
@@ -285,7 +289,7 @@ export default {
       dataSend.append("uid_saksi", this.user);
       dataSend.append("uid_wilayah", this.kec);
       dataSend.append("jenis", "DPR RI");
-      dataSend.append("suara", JSON.stringify(this.dataSuara));
+      dataSend.append("suara", JSON.stringify(this.dataSuaraDprRi));
       if (this.fotoDprRi.length > 0) {
         let newFoto = [];
         this.fotoDprRi.forEach((item, index) => {
@@ -299,6 +303,27 @@ export default {
           );
         });
       }
+      this.post(dataSend);
+    },
+    async post(data) {
+      await this.postDataDprRi(data)
+        .then((response) => {
+          this.textSnackbar = response.message;
+          this.colorSnackbar = "success";
+          this.alertSnackbar = true;
+          this.$emit("reloadHasil");
+        })
+        .catch((e) => {
+          this.textSnackbar = e.response.data.message;
+          this.colorSnackbar = "error";
+          this.alertSnackbar = true;
+        })
+        .finally(() => {
+          this.btnLoading = false;
+          this.fotoDprdProv = [];
+          this.tempDprdProv = [];
+        });
+      this.getDapil();
     },
     chooseImageDprRi() {
       if (this.tempDprRi?.length) {

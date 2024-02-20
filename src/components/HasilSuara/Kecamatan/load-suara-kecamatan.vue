@@ -34,7 +34,7 @@
         <v-divider class="my-3"></v-divider>
         <v-tabs grow v-model="currentItems" background-color="yellow lighten-5">
           <v-tab href="#DPR_RI"> Ir. H. MOHAMAD IDRIS LAENA, M.H </v-tab>
-          <v-tab href="#DPRD_KOTA">  Drs. M. JAMIL LAENA </v-tab>
+          <v-tab href="#DPRD_KOTA"> Drs. M. JAMIL LAENA </v-tab>
 
           <v-tabs-items v-model="currentItems">
             <v-tab-item value="DPR_RI">
@@ -43,9 +43,18 @@
                 :hasil-suara="hasilSuara"
                 :kabupaten="namaKabupaten"
                 :kecamatan="namaKecamatan"
+                @reloadHasil="dataHasil"
               />
             </v-tab-item>
-            <v-tab-item value="DPRD_KOTA"></v-tab-item>
+            <v-tab-item value="DPRD_KOTA">
+              <kecamatan-dprd-kota
+                :kec="kec"
+                :hasil-suara="hasilSuara"
+                :kabupaten="namaKabupaten"
+                :kecamatan="namaKecamatan"
+                @reloadHasil="dataHasil"
+              />
+            </v-tab-item>
           </v-tabs-items>
         </v-tabs>
       </v-card-text>
@@ -56,8 +65,9 @@
   <script>
 import { mapActions, mapGetters } from "vuex";
 import kecamatanDprRi from "./kecamatan-dpr-ri.vue";
+import KecamatanDprdKota from "./kecamatan-dprd-kota.vue";
 export default {
-  components: { kecamatanDprRi },
+  components: { kecamatanDprRi, KecamatanDprdKota },
   computed: {
     ...mapGetters({
       dataKota: "wilayah/kota",
